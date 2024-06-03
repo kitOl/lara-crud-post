@@ -8,7 +8,7 @@
     </div>
 </div>
 
-<table class="table.table-striped">
+<table class="table table-striped">
     <thead>
         <tr>
             <th> ID </th>
@@ -21,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-        @if (!empty($post))
+        @if (!empty($posts))
             @foreach ($posts as $post)
                 <tr>
                     <td> {{ $post->id }} </td>
@@ -32,11 +32,11 @@
                     <td> @if ($post->published == 1) <span class="badge badge-success">Published</span> @else NA @endif </td>
                     <td>
                         <form action="{{ route('post.destroy', $post->id) }}" method="POST">
-                        <a href="{{ route('post.show'), $post->id }}" class="btn btn-info btn-sm"> View </a>
-                        <a href="{{ route('post.edit'), $post->id }}" class="btn btn-success btn-sm"> Edit </a>
+                        <a href="{{ route('post.show', $post->id) }}" class="btn btn-info btn-sm"> View </a>
+                        <a href="{{ route('post.edit', $post->id) }}" class="btn btn-success btn-sm"> Edit </a>
                         @csrf
                         @method('DELETE')
-                            <button type="submit" class="btn.btn-danger.btn-sm">Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
                     </td>
                 </tr>
